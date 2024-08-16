@@ -8,6 +8,7 @@ body {
     align-items: center;
     background-color: #000;
     overflow-x: hidden; /* Para evitar el desbordamiento horizontal */
+    overflow-y: auto; /* Para permitir desplazamiento vertical */
 }
 
 .background {
@@ -23,8 +24,9 @@ body {
     animation: background-animation 20s linear infinite;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinea el contenido al inicio de la pantalla */
+    align-items: center;
     padding-top: 20px; /* Espacio adicional para evitar recorte en la parte superior */
+    box-sizing: border-box;
 }
 
 @keyframes background-animation {
@@ -47,7 +49,6 @@ body {
     z-index: 1;
     width: 90%;
     box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
-    overflow-y: auto; /* Para permitir desplazamiento vertical si es necesario */
 }
 
 .profile-photo {
