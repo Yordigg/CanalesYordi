@@ -2,21 +2,20 @@ body {
     font-family: 'Verdana', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
-    overflow: hidden;
 }
 
 .background {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%), 
-                linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%), 
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%),
                 linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%);
     background-size: 50px 50px;
     background-color: #0d0d0d;
@@ -44,6 +43,8 @@ body {
     background: rgba(0, 0, 0, 0.9); /* Fondo semitransparente */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
     z-index: 1;
+    width: 90%;
+    box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
 }
 
 .profile-photo {
@@ -91,6 +92,7 @@ p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border: 2px solid transparent;
     background-clip: padding-box;
+    width: 120px; /* Tamaño ajustado para íconos */
 }
 
 .icon img {
@@ -132,4 +134,70 @@ p {
 
 .whatsapp {
     border-color: #25d366;
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .profile-photo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .icon {
+        margin: 10px;
+        font-size: 1em;
+        padding: 15px;
+        width: 100px; /* Ajuste para móviles */
+    }
+
+    .icon img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .profile-photo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+
+    .icon {
+        margin: 8px;
+        font-size: 0.9em;
+        padding: 10px;
+        width: 80px; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .icon img {
+        width: 40px;
+        height: 40px;
+    }
 }
