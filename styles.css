@@ -1,0 +1,135 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%);
+    background-size: 50px 50px;
+    background-color: #0d0d0d;
+    animation: background-animation 20s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes background-animation {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 100px 100px, -100px -100px, 100px -100px, -100px 100px;
+    }
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.9); /* Fondo semitransparente */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+.profile-photo {
+    margin-bottom: 20px;
+}
+
+.profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #00ffea;
+    box-shadow: 0 0 15px #0004ff;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #5aa5e2; 
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #003535fd, 0 0 20px #00ffea, 0 0 30px #0400ff;
+}
+
+p {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0px 0px 10px #00ffea;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon {
+    margin: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(145deg, #0f0f0f, #1f1f1f);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+    border-color: #00ffea;
+}
+
+.icon:hover img {
+    transform: rotate(360deg);
+}
+
+.discord {
+    border-color: #7289da;
+}
+
+.twitch {
+    border-color: #6441a5;
+}
+
+.instagram {
+    border-color: #e1306c;
+}
+
+.tiktok {
+    border-color: #000000;
+}
+
+.youtube {
+    border-color: #ff0000;
+}
+
+.whatsapp {
+    border-color: #25d366;
+}
