@@ -12,7 +12,7 @@ body {
 
 .background {
     width: 100%;
-    height: auto; /* Permite que la altura se ajuste según el contenido */
+    height: auto;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
                 linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%),
@@ -20,11 +20,12 @@ body {
     background-size: 50px 50px;
     background-color: #0d0d0d;
     animation: background-animation 20s linear infinite;
-    padding-top: 20px; /* Asegura espacio superior */
-    padding-bottom: 20px; /* Asegura espacio inferior */
+    padding-top: 60px; /* Espacio adicional para evitar recorte en la parte superior */
+    padding-bottom: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinea el contenido al inicio */
+    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 @keyframes background-animation {
