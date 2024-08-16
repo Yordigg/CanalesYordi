@@ -23,7 +23,8 @@ body {
     animation: background-animation 20s linear infinite;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Alinea el contenido al inicio de la pantalla */
+    padding-top: 20px; /* Espacio adicional para evitar recorte en la parte superior */
 }
 
 @keyframes background-animation {
@@ -47,7 +48,6 @@ body {
     width: 90%;
     box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
     overflow-y: auto; /* Para permitir desplazamiento vertical si es necesario */
-    margin-top: 20px; /* Espacio adicional para evitar recorte en la parte superior */
 }
 
 .profile-photo {
@@ -144,7 +144,6 @@ p {
 @media (max-width: 768px) {
     .container {
         max-width: 90%;
-        margin-top: 10px; /* Ajuste adicional para pantallas medianas */
     }
 
     .profile-photo img {
@@ -182,7 +181,6 @@ p {
 @media (max-width: 480px) {
     .container {
         max-width: 100%;
-        margin-top: 5px; /* Ajuste adicional para pantallas pequeñas */
     }
 
     .profile-photo img {
