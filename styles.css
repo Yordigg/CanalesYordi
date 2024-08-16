@@ -46,7 +46,6 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
     width: 90%;
     box-sizing: border-box;
-    overflow-x: auto; /* Permitir scroll horizontal */
 }
 
 .profile-photo img {
@@ -72,11 +71,10 @@ p {
 }
 
 .social-icons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 15px;
-    overflow-x: auto; /* Permitir scroll horizontal si es necesario */
+    justify-content: center;
 }
 
 .icon {
@@ -91,7 +89,6 @@ p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border: 2px solid transparent;
     background-clip: padding-box;
-    min-width: 120px; /* Asegurar que todos los iconos tengan un tamaño mínimo uniforme */
 }
 
 .icon img {
@@ -140,7 +137,6 @@ p {
 @media (max-width: 768px) {
     .container {
         max-width: 90%;
-        overflow-x: auto;
     }
 
     .profile-photo img {
@@ -158,13 +154,12 @@ p {
     }
 
     .social-icons {
-        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 
     .icon {
         font-size: 1em;
         padding: 15px;
-        min-width: 100px;
     }
 
     .icon img {
@@ -176,7 +171,6 @@ p {
 @media (max-width: 480px) {
     .container {
         max-width: 100%;
-        overflow-x: auto;
     }
 
     .profile-photo img {
@@ -194,13 +188,12 @@ p {
     }
 
     .social-icons {
-        gap: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
     .icon {
         font-size: 0.9em;
         padding: 10px;
-        min-width: 90px;
     }
 
     .icon img {
