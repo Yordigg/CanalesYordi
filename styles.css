@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #000;
+    overflow-x: hidden; /* Para evitar el desbordamiento horizontal */
 }
 
 .background {
@@ -45,6 +46,7 @@ body {
     z-index: 1;
     width: 90%;
     box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
+    overflow-y: auto; /* Para permitir desplazamiento vertical si es necesario */
 }
 
 .profile-photo {
@@ -168,6 +170,11 @@ p {
         width: 50px;
         height: 50px;
     }
+
+    .social-icons {
+        flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -199,5 +206,10 @@ p {
     .icon img {
         width: 40px;
         height: 40px;
+    }
+
+    .social-icons {
+        flex-direction: column; /* Asegura que los iconos se apilen verticalmente */
+        align-items: center;
     }
 }
