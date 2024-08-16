@@ -20,7 +20,7 @@ body {
     background-size: 50px 50px;
     background-color: #0d0d0d;
     animation: background-animation 20s linear infinite;
-    padding-top: 60px; /* Espacio adicional para evitar recorte en la parte superior */
+    padding-top: 60px; 
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -71,13 +71,13 @@ p {
 }
 
 .social-icons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .icon {
-    margin: 15px;
     text-decoration: none;
     color: white;
     font-size: 1.1em;
@@ -89,7 +89,6 @@ p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border: 2px solid transparent;
     background-clip: padding-box;
-    width: 120px;
 }
 
 .icon img {
@@ -155,17 +154,12 @@ p {
     }
 
     .social-icons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 
     .icon {
-        margin: 10px;
         font-size: 1em;
         padding: 15px;
-        width: 100%;
     }
 
     .icon img {
@@ -194,17 +188,12 @@ p {
     }
 
     .social-icons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
     .icon {
-        margin: 8px;
         font-size: 0.9em;
         padding: 10px;
-        width: 100%;
     }
 
     .icon img {
