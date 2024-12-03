@@ -1,203 +1,460 @@
-body {
-    font-family: 'Verdana', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    background-color: #000;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .background {
-    width: 100%;
-    height: auto;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%);
-    background-size: 50px 50px;
-    background-color: #0d0d0d;
-    animation: background-animation 20s linear infinite;
-    padding-top: 60px; 
-    padding-bottom: 20px;
+    min-height: 100vh;
+    background: linear-gradient(
+        -45deg,
+        #000000,
+        #1a1a1a,
+        #222222,
+        #0a0a0a
+    );
+    background-size: 400% 400%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    box-sizing: border-box;
+    align-items: center;
+    padding: 20px;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+    overflow: hidden;
 }
 
-@keyframes background-animation {
-    0% {
-        background-position: 0 0, 0 0, 0 0, 0 0;
-    }
-    100% {
-        background-position: 100px 100px, -100px -100px, 100px -100px, -100px 100px;
-    }
+/* Efecto de partículas brillantes en tonos grises */
+.background::before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        radial-gradient(#ffffff, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(#cccccc, rgba(204,204,204,.15) 1px, transparent 2px),
+        radial-gradient(#999999, rgba(153,153,153,.1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: twinkle 10s ease infinite;
+    opacity: 0.2;
 }
 
 .container {
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
     text-align: center;
     max-width: 800px;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
-    width: 90%;
-    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7),
+                0 0 60px rgba(128, 0, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: containerGlow 3s ease-in-out infinite;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.1), 
+        rgba(255,255,255,0.2), 
+        rgba(255,255,255,0.1)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px;
+    position: relative;
+}
+
+.profile-photo::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+}
+
+.profile-photo::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ffffff20, #ffffff10);
+    animation: pulse 2s linear infinite;
 }
 
 .profile-photo img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #00ffea;
-    box-shadow: 0 0 15px #0004ff;
+    border: 4px solid transparent;
+    background: #000;
+    filter: brightness(1.1);
 }
 
 h1 {
-    font-size: 2.5em;
-    color: #5aa5e2; 
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #003535fd, 0 0 20px #00ffea, 0 0 30px #0400ff;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: textGlow 3s ease-in-out infinite;
 }
 
 p {
-    font-size: 1.2em;
-    color: #ffffff;
+    color: #ccc;
+    font-size: 1.2rem;
     margin-bottom: 30px;
-    text-shadow: 0px 0px 10px #00ffea;
+}
+
+.social-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.social-sections > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.social-sections > *:nth-child(2) { animation-delay: 0.2s; }
+.social-sections > *:nth-child(3) { animation-delay: 0.4s; }
+.social-sections > *:nth-child(4) { animation-delay: 0.6s; }
+.social-sections > *:nth-child(5) { animation-delay: 0.8s; }
+.social-sections > *:nth-child(6) { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.3), 
+        transparent
+    );
 }
 
 .social-icons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 15px;
-    justify-content: center;
+    padding: 0 15px;
+}
+
+.social-icons.streaming {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.social-icons.community {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.social-icons.social {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 12px;
     text-decoration: none;
     color: white;
-    font-size: 1.1em;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: linear-gradient(145deg, #0f0f0f, #1f1f1f);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    border: 2px solid transparent;
-    background-clip: padding-box;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.icon img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-    transition: transform 0.3s;
+.icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.icon:hover::before {
+    animation: shine 0.5s forwards;
 }
 
 .icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
-    border-color: #00ffea;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.icon img {
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
 .icon:hover img {
-    transform: rotate(360deg);
+    transform: scale(1.1);
 }
 
-.discord {
-    border-color: #7289da;
+.icon span {
+    font-size: 0.9rem;
 }
 
-.twitch {
-    border-color: #6441a5;
+/* Hover effects con glow */
+.discord:hover { background: #7289da; box-shadow: 0 0 20px rgba(114, 137, 218, 0.4); }
+.twitch:hover { background: #9146ff; box-shadow: 0 0 20px rgba(145, 70, 255, 0.4); }
+.instagram:hover { background: #e4405f; box-shadow: 0 0 20px rgba(228, 64, 95, 0.4); }
+.tiktok:hover { background: #000000; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
+.youtube:hover { background: #ff0000; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+.whatsapp:hover { background: #25D366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+.kick:hover { background: #53FC18; box-shadow: 0 0 20px rgba(83, 252, 24, 0.4); }
+
+/* Animaciones */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.instagram {
-    border-color: #e1306c;
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
 }
 
-.tiktok {
-    border-color: #000000;
+@keyframes containerGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), 0 0 60px rgba(128, 0, 255, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 80px rgba(128, 0, 255, 0.2); }
 }
 
-.youtube {
-    border-color: #ff0000;
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+    50% { opacity: 0.8; transform: rotate(180deg); }
 }
 
-.whatsapp {
-    border-color: #25d366;
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
 }
 
-/* Media Queries para dispositivos móviles */
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
 
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .container {
-        max-width: 90%;
-    }
-
-    .profile-photo img {
-        width: 100px;
-        height: 100px;
+        margin: 10px;
+        padding: 20px 15px;
+        width: calc(100% - 20px);
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 1.8rem;
     }
 
     p {
-        font-size: 1em;
+        font-size: 1rem;
         margin-bottom: 20px;
     }
 
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .social-sections {
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
     .social-icons {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 0 5px;
+    }
+
+    .social-icons.streaming,
+    .social-icons.community,
+    .social-icons.social {
+        grid-template-columns: 1fr;
     }
 
     .icon {
-        font-size: 1em;
-        padding: 15px;
+        padding: 12px 15px;
+        justify-content: flex-start;
     }
 
     .icon img {
-        width: 50px;
-        height: 50px;
+        width: 28px;
+        height: 28px;
+        margin-right: 15px;
+    }
+
+    .icon span {
+        font-size: 1rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 360px) {
     .container {
-        max-width: 100%;
-    }
-
-    .profile-photo img {
-        width: 80px;
-        height: 80px;
+        margin: 5px;
+        padding: 15px 10px;
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 1.5rem;
     }
 
     p {
-        font-size: 0.9em;
-        margin-bottom: 15px;
+        font-size: 0.9rem;
     }
 
-    .social-icons {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .section-title {
+        font-size: 1rem;
     }
 
     .icon {
-        font-size: 0.9em;
         padding: 10px;
     }
 
     .icon img {
-        width: 40px;
-        height: 40px;
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
     }
+
+    .icon span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ajustes para evitar problemas con la altura en móviles */
+@media (max-height: 700px) {
+    .container {
+        margin: 10px 0;
+    }
+
+    .profile-photo {
+        margin-bottom: 10px;
+    }
+
+    .social-sections {
+        gap: 15px;
+    }
+}
+
+/* Prevenir zoom en inputs en iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select,
+    textarea,
+    input {
+        font-size: 16px;
+    }
+}
+
+/* Agregar soporte para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: rgba(10, 10, 10, 0.95);
+    }
+}
+
+/* Estilos para el loader */
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 0.5s ease 1s forwards;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #333;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
 }
